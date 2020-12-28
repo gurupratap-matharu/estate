@@ -17,6 +17,7 @@ class Property(models.Model):
     class Meta:
         abstract = True
 
+    def search(self, )
 
 class House(Property):
     ATTACHED = 'AT'
