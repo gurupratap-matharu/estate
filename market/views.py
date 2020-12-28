@@ -3,3 +3,7 @@ from django.views.generic import TemplateView
 
 class HomePageView(TemplateView):
     template_name = 'market/home.html'
+
+
+class SearchResultsView(TemplateView):
+    template_name = 'market/search_results.html'
