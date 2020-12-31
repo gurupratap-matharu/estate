@@ -16,6 +16,7 @@ class Property(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-updated_on', ]
 
 
 class House(Property):
@@ -35,6 +36,9 @@ class House(Property):
     yard_fenced = models.BooleanField('Is the yard fenced?', default=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
 
+    def __str__(self):
+        return f'{self.square_footage}sqft-{self.num_stories}stories-${self.price}'
+
 
 class Apartment(Property):
     ENSUITE = 'EN'
@@ -51,3 +55,6 @@ class Apartment(Property):
     balcony = models.BooleanField('Has a balcony?', default=True)
     laundry = models.CharField(max_length=2, choices=LAUNDRY_CHOICES, default=ENSUITE)
     price = models.DecimalField(max_digits=10, decimal_places=0)
+
+    def __str__(self):
+        return f'{self.square_footage}sqft-${self.price}'
