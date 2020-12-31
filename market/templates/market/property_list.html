@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="display-4">Properties List</div>
+
+<ul>
+    {% for property in property_list %}
+    <li>{{ property }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
