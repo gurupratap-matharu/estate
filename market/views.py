@@ -1,4 +1,4 @@
-from django.views.generic import ListView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView
 
 from market.models import Apartment, House
 
@@ -11,16 +11,29 @@ class SearchResultsView(TemplateView):
     template_name = 'market/search_results.html'
 
 
-class ProperyListView(ListView):
+class PropertyListView(ListView):
     model = None
     template_name = 'market/property_list.html'
-    paginate_by = 9
     context_object_name = 'property_list'
 
 
-class HouseListView(ProperyListView):
+class PropertyDetailView(DetailView):
+    model = None
+    template_name = 'market/property_detail.html'
+    context_object_name = 'property'
+
+
+class HouseListView(PropertyListView):
     model = House
 
 
-class ApartmentListView(ProperyListView):
+class HouseDetailView(PropertyDetailView):
+    model = House
+
+
+class ApartmentListView(PropertyListView):
+    model = Apartment
+
+
+class ApartmentDetailView(PropertyDetailView):
     model = Apartment
