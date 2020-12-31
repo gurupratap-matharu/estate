@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.urls import reverse
 
 
 class Property(models.Model):
@@ -39,6 +40,9 @@ class House(Property):
     def __str__(self):
         return f'{self.square_footage}sqft-{self.num_stories}stories-${self.price}'
 
+    def get_absolute_url(self):
+        return reverse('market:house_detail', args=[str(self.id)])
+
 
 class Apartment(Property):
     ENSUITE = 'EN'
@@ -58,3 +62,6 @@ class Apartment(Property):
 
     def __str__(self):
         return f'{self.square_footage}sqft-${self.price}'
+
+    def get_absolute_url(self):
+        return reverse('market:apartment_detail', args=[str(self.id)])
