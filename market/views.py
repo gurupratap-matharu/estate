@@ -7,10 +7,6 @@ class HomePageView(TemplateView):
     template_name = 'market/home.html'
 
 
-class SearchResultsView(TemplateView):
-    template_name = 'market/search_results.html'
-
-
 class PropertyListView(ListView):
     model = None
     template_name = 'market/property_list.html'
