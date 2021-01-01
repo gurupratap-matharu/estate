@@ -1,5 +1,7 @@
 import uuid
+from decimal import Decimal
 
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.urls import reverse
 
@@ -18,10 +20,10 @@ class Property(models.Model):
     ]
 
     square_footage = models.PositiveIntegerField(verbose_name='Area in sqft')
-    num_bedrooms = models.PositiveSmallIntegerField('Number of bedrooms')
-    num_bathrooms = models.PositiveSmallIntegerField('Number of bathrooms')
-    offer = models.CharField(choices=OFFER_CHOICES, default=SALE)
-    price = models.DecimalField(max_digits=10, decimal_places=0)
+    num_bedrooms = models.PositiveSmallIntegerField('Number of bedrooms', default=3)
+    num_bathrooms = models.PositiveSmallIntegerField('Number of bathrooms', default=2)
+    offer = models.CharField(max_length=2, choices=OFFER_CHOICES, default=SALE)
+    price = models.DecimalField(max_digits=12, decimal_places=0, validators=[MinValueValidator(Decimal('1'))])
 
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
