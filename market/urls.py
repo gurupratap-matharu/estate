@@ -1,7 +1,7 @@
 from django.urls import path
 
 from market.views import (ApartmentDetailView, ApartmentListView, HomePageView,
-                          HouseDetailView, HouseListView, SearchResultsView)
+                          HouseDetailView, HouseListView)
 
 app_name = 'market'
 
