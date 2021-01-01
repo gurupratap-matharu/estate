@@ -33,3 +33,7 @@ class ApartmentListView(PropertyListView):
 
 class ApartmentDetailView(PropertyDetailView):
     model = Apartment
+
+
+class SellHomeView(TemplateView):
+    template_name = 'market/sell_home.html'
